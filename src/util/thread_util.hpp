@@ -72,16 +72,7 @@ template <typename T>
 void ThreadUtil::Thread<T>::thread_constructor_loop(void)
 {
     thread_constructor_handle(args);
-    while (running)
-    {
-        if (!paused)
-        {
-            thread_callback_handle(args);
-           
-            std::this_thread::sleep_for(std::chrono::milliseconds(int(1000 * (1.0 / freq))));
-        }
-        
-    }
+    thread_loop();
     thread_destructor_handle(args);
 }
 
