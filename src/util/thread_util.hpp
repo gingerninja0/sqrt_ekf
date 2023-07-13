@@ -20,7 +20,7 @@ ThreadUtil::Thread<T>::Thread(const double& freq, std::function<void(T*)> callba
     : freq(freq), running(true), paused(false), args(args), thread_callback_handle(std::move(callback_handle))
     , thread_constructor_handle(std::move(constructor_handle)), thread_destructor_handle(std::move(destructor_handle))
 {
-    thread = std::thread(&Thread::thread_constructor_loop, this);
+    thread = std::thread(&Thread::thread_setup, this);
 }
 
 template <typename T>
@@ -69,7 +69,7 @@ void ThreadUtil::Thread<T>::thread_loop(void)
 }
 
 template <typename T>
-void ThreadUtil::Thread<T>::thread_constructor_loop(void)
+void ThreadUtil::Thread<T>::thread_setup(void)
 {
     thread_constructor_handle(args);
     thread_loop();

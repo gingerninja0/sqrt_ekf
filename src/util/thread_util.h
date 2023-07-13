@@ -92,7 +92,7 @@ private:
     T* args;
 
     void thread_loop(void);
-    void thread_constructor_loop(void);
+    void thread_setup(void);
 
     std::function<void(T*)> thread_callback_handle, thread_constructor_handle, thread_destructor_handle;
 
