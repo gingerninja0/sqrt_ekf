@@ -10,12 +10,6 @@
 namespace ThreadUtil
 {
 
-template <typename T, typename T_handle>
-std::function<void(T*)> bind(T_handle func_handle)
-{
-    return std::bind(&func_handle, std::placeholders::_1);
-}
-
 struct Empty { /* Empty object for cases where we do not want to pass arguments to the thread */ };
 
 // A struct that can be interhited by args to be used as a mutex
