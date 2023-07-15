@@ -1,4 +1,5 @@
-#include <type_traits>
+#pragma once
+
 #include "../util/thread_util.h"
 
 struct ThreadArgsTest : public ThreadUtil::ThreadMtx
