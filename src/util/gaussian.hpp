@@ -13,7 +13,7 @@
 template <typename T = double>
 class Gaussian
 {
-private:
+protected:
 
     Eigen::VectorX<T> mu;
     Eigen::MatrixX<T> S;
@@ -69,7 +69,7 @@ public:
         mu = mu_;
     }
 
-    void set_cov(Eigen::MatrixX<T> & S_)
+    void set_sqrt_cov(Eigen::MatrixX<T> & S_)
     {
         S = S_;
     }
