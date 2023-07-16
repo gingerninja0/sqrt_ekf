@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "simulate.h"
+#include "test_thread.h"
 
 
 int main()

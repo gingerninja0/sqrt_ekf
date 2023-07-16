@@ -9,12 +9,19 @@ endif()
 find_package(Eigen3 REQUIRED)
 find_package(Boost REQUIRED)
 
-add_executable(example src/sim/simulate.cpp src/util/thread_util.h)
+add_executable(test_thread src/test/test_thread.cpp src/util/thread_util.h src/util/gaussian.hpp)
+add_executable(test_gaussian src/test/test_gaussian.cpp src/util/thread_util.h src/util/gaussian.hpp)
 
-target_include_directories(example PRIVATE ${EIGEN3_INCLUDE_DIR})
-target_link_libraries(example ${EIGEN3_LIBRARY})
+set(EXE_LIST test_thread test_gaussian)
 
-target_include_directories(example PRIVATE ${BOOST_INCLUDE_DIR})
-target_link_libraries(example ${BOOST_LIBRARY})
+foreach(EXE_VAR ${EXE_LIST})
+
+  target_include_directories(${EXE_VAR} PRIVATE ${EIGEN3_INCLUDE_DIR})
+  target_link_libraries(${EXE_VAR} ${EIGEN3_LIBRARY})
+
+  target_include_directories(${EXE_VAR} PRIVATE ${BOOST_INCLUDE_DIR})
+  target_link_libraries(${EXE_VAR} ${BOOST_LIBRARY})
+
+endforeach()
 
 
